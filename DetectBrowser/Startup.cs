@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection;
 
 namespace DetectBrowser
 {
@@ -31,6 +32,9 @@ namespace DetectBrowser
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Add detection services container and device resolver service.
+            services.AddDetection();
+            services.AddDetectionCore().AddBrowser();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
