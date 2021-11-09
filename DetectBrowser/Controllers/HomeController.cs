@@ -21,7 +21,9 @@ namespace DetectBrowser.Controllers
         {
             string browser_information = _detection.Browser.Type.ToString() +
                                      _detection.Browser.Version;
-            ViewBag.Message = browser_information;
+            string device_information = _detection.Device.Type.ToString();
+            ViewBag.Browser = browser_information;
+            ViewBag.Device = device_information;
             return View();
         }
 
